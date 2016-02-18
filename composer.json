@@ -1,0 +1,33 @@
+{
+    "name": "pcrov/iteratorstackiterator",
+    "homepage": "https://github.com/pcrov/iteratorstackiterator",
+    "description": "Iterates over a stack of iterators, discarding them as they complete.",
+    "keywords": [
+        "iterator",
+        "stack"
+    ],
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Paul Crovella",
+            "role": "developer"
+        }
+    ],
+    "require": {
+        "php": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.2.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "pcrov\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "pcrov\\": "test/"
+        }
+    }
+}
