@@ -4,6 +4,15 @@ namespace pcrov;
 
 use Iterator;
 
+/**
+ * Class IteratorStackIterator
+ *
+ * This outer iterator iterates seamlessly over a stack of iterators. If one of
+ * the iterators on the stack has its cursor position changed externally the
+ * behavior is undefined.
+ *
+ * @package pcrov
+ */
 class IteratorStackIterator implements \OuterIterator
 {
     /**
@@ -18,11 +27,14 @@ class IteratorStackIterator implements \OuterIterator
 
     /**
      * @param Iterator $iterator
-     * @return void
+     * @param Iterator ...$moreIterators
+     * @return int
      */
-    public function push(Iterator $iterator)
+    public function push(Iterator $iterator, Iterator ...$moreIterators) : int
     {
-        $this->stack[] = $this->top = $iterator;
+        $count = array_push($this->stack, $iterator, ...$moreIterators);
+        $this->top = end($this->stack);
+        return $count;
     }
 
     /**
@@ -36,7 +48,7 @@ class IteratorStackIterator implements \OuterIterator
     }
 
     /**
-     * @return mixed the current element
+     * @return mixed the current element from the current iterator
      */
     public function current()
     {
