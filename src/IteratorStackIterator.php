@@ -2,35 +2,31 @@
 
 namespace pcrov;
 
-use Iterator;
-
 /**
  * Class IteratorStackIterator
  *
  * This outer iterator iterates seamlessly over a stack of iterators. If one of
  * the iterators on the stack has its cursor position changed externally the
  * behavior is undefined.
- *
- * @package pcrov
  */
 class IteratorStackIterator implements \OuterIterator
 {
     /**
-     * @var Iterator[]
+     * @var \Iterator[]
      */
     private $stack = [];
 
     /**
-     * @var Iterator|null Top of the stack.
+     * @var \Iterator|null Top of the stack.
      */
     private $top;
 
     /**
-     * @param Iterator $iterator
-     * @param Iterator ...$moreIterators
+     * @param \Iterator $iterator
+     * @param \Iterator ...$moreIterators
      * @return int
      */
-    public function push(Iterator $iterator, Iterator ...$moreIterators) : int
+    public function push(\Iterator $iterator, \Iterator ...$moreIterators) : int
     {
         $count = array_push($this->stack, $iterator, ...$moreIterators);
         $this->top = end($this->stack);
@@ -38,7 +34,7 @@ class IteratorStackIterator implements \OuterIterator
     }
 
     /**
-     * @return Iterator|null
+     * @return \Iterator|null
      */
     public function pop()
     {
@@ -107,7 +103,7 @@ class IteratorStackIterator implements \OuterIterator
     }
 
     /**
-     * @return Iterator|null The current iterator
+     * @return \Iterator|null The current iterator
      */
     public function getInnerIterator()
     {
