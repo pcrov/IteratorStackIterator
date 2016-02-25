@@ -1,12 +1,12 @@
 # IteratorStackIterator
 
-Iterates over a stack of iterators, discarding them as they complete.
-
 [![Build Status](https://travis-ci.org/pcrov/IteratorStackIterator.svg?branch=master)](https://travis-ci.org/pcrov/IteratorStackIterator)
 [![License](https://poser.pugx.org/pcrov/iteratorstackiterator/license)](https://github.com/pcrov/IteratorStackIterator/blob/master/LICENSE)
 [![Latest Stable Version](https://poser.pugx.org/pcrov/iteratorstackiterator/v/stable)](https://packagist.org/packages/pcrov/iteratorstackiterator)
 [![Total Downloads](https://poser.pugx.org/pcrov/iteratorstackiterator/downloads)](https://packagist.org/packages/pcrov/iteratorstackiterator)
 [![Latest Unstable Version](https://poser.pugx.org/pcrov/iteratorstackiterator/v/unstable)](https://packagist.org/packages/pcrov/iteratorstackiterator)
+
+Iterates over a stack of iterators, discarding them as they complete.
 
 ## Requirements
 
