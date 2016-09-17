@@ -63,8 +63,11 @@ class IteratorStackIterator implements \OuterIterator
      */
     public function next()
     {
-        $this->top->next();
-        $this->discardInvalid();
+        $top = $this->top;
+        if ($top !== null) {
+            $top->next();
+            $this->discardInvalid();
+        }
     }
 
     /**

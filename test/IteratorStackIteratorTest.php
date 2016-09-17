@@ -38,6 +38,7 @@ class IteratorStackIteratorTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($stack->current());
         $this->assertNull($stack->getInnerIterator());
         $this->assertNull($stack->pop());
+        $stack->next(); // Make sure it doesn't throw on an empty stack. See issue #1.
     }
 
     public function testPush()
