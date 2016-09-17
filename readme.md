@@ -8,7 +8,9 @@ Iterates over a stack of iterators, discarding them as they complete.
 
 ## Requirements
 
-PHP 7
+PHP 7 with either the [Ds extension](http://php.net/ds) or its [polyfill](https://github.com/php-ds/polyfill).
+The php-ds polyfill will be installed automatically when IteratorStackIterator is installed via composer
+and only loaded if the Ds extension is not installed and enabled.
 
 ## Installation
 

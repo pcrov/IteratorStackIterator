@@ -2,6 +2,8 @@
 
 namespace pcrov;
 
+use Ds\Vector;
+
 /**
  * Class IteratorStackIterator
  *
@@ -12,14 +14,14 @@ namespace pcrov;
 class IteratorStackIterator implements \OuterIterator
 {
     /**
-     * @var \Iterator[]
+     * @var Vector
      */
-    private $stack = [];
+    private $stack;
 
-    /**
-     * @var \Iterator|null Top of the stack.
-     */
-    private $top;
+    public function __construct()
+    {
+        $this->stack = new Vector();
+    }
 
     /**
      * @param \Iterator $iterator
@@ -28,9 +30,8 @@ class IteratorStackIterator implements \OuterIterator
      */
     public function push(\Iterator $iterator, \Iterator ...$moreIterators) : int
     {
-        $count = array_push($this->stack, $iterator, ...$moreIterators);
-        $this->top = end($this->stack);
-        return $count;
+        $this->stack->push($iterator, ...$moreIterators);
+        return $this->stack->count();
     }
 
     /**
@@ -38,9 +39,7 @@ class IteratorStackIterator implements \OuterIterator
      */
     public function pop()
     {
-        $popped = array_pop($this->stack);
-        $this->top = end($this->stack) ?: null;
-        return $popped;
+        return $this->valid() ? $this->stack->pop() : null;
     }
 
     /**
@@ -48,10 +47,7 @@ class IteratorStackIterator implements \OuterIterator
      */
     public function current()
     {
-        if ($this->top === null) {
-            return null;
-        }
-        return $this->top->current();
+        return $this->valid() ? $this->stack->last()->current() : null;
     }
 
     /**
@@ -63,9 +59,8 @@ class IteratorStackIterator implements \OuterIterator
      */
     public function next()
     {
-        $top = $this->top;
-        if ($top !== null) {
-            $top->next();
+        if (!$this->stack->isEmpty()) {
+            $this->stack->last()->next();
             $this->discardInvalid();
         }
     }
@@ -77,10 +72,7 @@ class IteratorStackIterator implements \OuterIterator
      */
     public function key()
     {
-        if ($this->top === null) {
-            return null;
-        }
-        return $this->top->key();
+        return $this->valid() ? $this->stack->last()->key() : null;
     }
 
     /**
@@ -90,7 +82,7 @@ class IteratorStackIterator implements \OuterIterator
      */
     public function valid() : bool
     {
-        return $this->top !== null;
+        return !$this->stack->isEmpty();
     }
 
     /**
@@ -110,7 +102,7 @@ class IteratorStackIterator implements \OuterIterator
      */
     public function getInnerIterator()
     {
-        return $this->top;
+        return $this->valid() ? $this->stack->last() : null;
     }
 
     /**
@@ -119,7 +111,7 @@ class IteratorStackIterator implements \OuterIterator
      */
     private function discardInvalid()
     {
-        while ($this->top !== null && !$this->top->valid()) {
+        while ($this->valid() && !$this->stack->last()->valid()) {
             $this->pop();
         }
     }
