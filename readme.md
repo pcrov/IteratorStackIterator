@@ -1,6 +1,7 @@
 # IteratorStackIterator
 
 [![Build Status](https://travis-ci.org/pcrov/IteratorStackIterator.svg?branch=master)](https://travis-ci.org/pcrov/IteratorStackIterator)
+[![Coverage Status](https://coveralls.io/repos/github/pcrov/IteratorStackIterator/badge.svg?branch=master)](https://coveralls.io/github/pcrov/IteratorStackIterator?branch=master)
 [![License](https://poser.pugx.org/pcrov/iteratorstackiterator/license)](https://github.com/pcrov/IteratorStackIterator/blob/master/LICENSE)
 [![Latest Stable Version](https://poser.pugx.org/pcrov/iteratorstackiterator/v/stable)](https://packagist.org/packages/pcrov/iteratorstackiterator)
 
