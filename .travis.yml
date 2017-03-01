@@ -4,12 +4,10 @@ php:
   - 7
   - 7.1
   - nightly
-  - hhvm
 
 matrix:
   allow_failures:
     - php: nightly
-    - php: hhvm
   fast_finish: true
 
 env:
