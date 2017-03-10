@@ -28,7 +28,7 @@ class IteratorStackIterator implements \OuterIterator
      * @param \Iterator ...$moreIterators
      * @return int
      */
-    public function push(\Iterator $iterator, \Iterator ...$moreIterators) : int
+    public function push(\Iterator $iterator, \Iterator ...$moreIterators): int
     {
         $this->stack->push($iterator, ...$moreIterators);
         return $this->stack->count();
@@ -80,7 +80,7 @@ class IteratorStackIterator implements \OuterIterator
      *
      * @return bool
      */
-    public function valid() : bool
+    public function valid(): bool
     {
         return !$this->stack->isEmpty();
     }
