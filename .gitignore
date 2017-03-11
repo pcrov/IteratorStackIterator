@@ -1,4 +1,7 @@
 .idea/
 vendor/
+build/
+phpunit.xml
+humbug.json
 composer.lock
 scratchpad.php
