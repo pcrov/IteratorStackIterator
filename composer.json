@@ -18,6 +18,9 @@
         "php": "^7.0",
         "php-ds/php-ds": "^1"
     },
+    "suggest": {
+        "ext-ds": ""
+    },
     "require-dev": {
         "phpunit/phpunit": "^5.2"
     },
